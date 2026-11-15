@@ -1,0 +1,891 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10152f">
+<meta name="description" content="MindSpark Kids - Discover, learn, play and grow through interactive education, memory challenges and family learning.">
+<title>MindSpark Kids | Learning Without Limits</title>
+
+<style>
+:root {
+  --navy:#10152f;
+  --blue:#5267ed;
+  --purple:#8055ed;
+  --cyan:#36c6df;
+  --yellow:#ffd35c;
+  --pink:#ff79ae;
+  --green:#48c99b;
+  --bg:#f5f6fc;
+  --white:#ffffff;
+  --text:#242b46;
+  --muted:#788098;
+  --radius:22px;
+  --shadow:0 12px 35px rgba(30,40,90,.09);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Inter,system-ui,-apple-system,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+}
+button,a{font:inherit}
+button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+.container{width:min(1180px,92%);margin:auto}
+.section{padding:85px 0}
+.section-title{text-align:center;margin-bottom:42px}
+.section-title h2{font-size:clamp(29px,4vw,43px);line-height:1.2}
+.section-title p{color:var(--muted);margin-top:12px}
+.gradient{
+  background:linear-gradient(110deg,var(--blue),var(--purple));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.btn{
+  border:0;border-radius:13px;padding:13px 22px;
+  font-weight:800;display:inline-flex;align-items:center;
+  justify-content:center;gap:8px;transition:.2s;
+}
+.btn:hover{transform:translateY(-3px)}
+.btn-primary{background:var(--blue);color:white}
+.btn-light{background:white;color:var(--navy)}
+.btn-dark{background:var(--navy);color:white}
+.btn-outline{border:1px solid #dfe2ee;background:white;color:var(--text)}
+header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid #eceef5;
+}
+.nav{
+  height:76px;display:flex;align-items:center;
+  justify-content:space-between;gap:20px;
+}
+.logo{font-size:23px;font-weight:950;letter-spacing:-1px;color:var(--navy)}
+.logo span{color:var(--purple)}
+.logo small{display:block;font-size:9px;letter-spacing:3px;color:var(--muted)}
+.nav-links{display:flex;align-items:center;gap:24px;font-size:14px;font-weight:700}
+.nav-links a:hover{color:var(--blue)}
+.menu-btn{display:none;border:0;background:none;font-size:25px}
+.hero{
+  overflow:hidden;position:relative;
+  background:linear-gradient(130deg,#111834,#292c72 65%,#6546be);
+  color:white;padding:90px 0 100px;
+}
+.hero:before,.hero:after{
+  content:"";position:absolute;border-radius:50%;
+  background:rgba(255,255,255,.06);
+}
+.hero:before{width:400px;height:400px;right:-100px;top:-140px}
+.hero:after{width:250px;height:250px;left:45%;bottom:-180px}
+.hero-grid{
+  display:grid;grid-template-columns:1.1fr .9fr;
+  align-items:center;gap:50px;position:relative;z-index:1;
+}
+.eyebrow{
+  display:inline-block;padding:7px 13px;border-radius:50px;
+  background:rgba(255,255,255,.12);font-size:12px;
+  font-weight:800;letter-spacing:1px;margin-bottom:20px;
+}
+.hero h1{font-size:clamp(42px,6vw,69px);line-height:1.06;letter-spacing:-2px}
+.hero h1 span{color:var(--yellow)}
+.hero-copy{color:#d8dcfa;font-size:17px;max-width:540px;margin:23px 0 30px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.hero-stats{display:flex;gap:30px;margin-top:35px;flex-wrap:wrap}
+.hero-stats strong{display:block;font-size:22px}
+.hero-stats small{color:#c7cbee}
+.hero-art{
+  min-height:390px;display:grid;place-items:center;position:relative;
+}
+.orbit{
+  width:320px;height:320px;border-radius:50%;
+  background:linear-gradient(145deg,#8c70ff,#4ec9ee);
+  display:grid;place-items:center;
+  box-shadow:0 0 90px rgba(104,112,255,.4);
+  font-size:145px;
+}
+.float-card{
+  position:absolute;background:white;color:var(--text);
+  padding:15px 18px;border-radius:17px;box-shadow:var(--shadow);
+  font-size:13px;font-weight:800;
+}
+.float-card.one{top:35px;right:0}
+.float-card.two{bottom:35px;left:0}
+.float-card.three{right:-5px;bottom:25px}
+.trust-strip{
+  display:flex;justify-content:center;gap:40px;flex-wrap:wrap;
+  padding:24px;background:white;color:var(--muted);
+  font-size:13px;font-weight:800;
+}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.feature-card{
+  padding:27px;background:white;border-radius:var(--radius);
+  box-shadow:var(--shadow);transition:.25s;
+}
+.feature-card:hover{transform:translateY(-6px)}
+.feature-icon{
+  width:58px;height:58px;border-radius:17px;
+  display:grid;place-items:center;font-size:28px;margin-bottom:17px;
+}
+.feature-card h3{margin-bottom:8px}
+.feature-card p{color:var(--muted);font-size:14px}
+.blue{background:#e8edff}.pink{background:#ffedf5}
+.yellow{background:#fff4d8}.green{background:#e2f8ee}
+.cyan{background:#e2f8fc}.purple{background:#f0e9ff}
+
+.learning-section{background:#fff}
+.learning-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center;
+}
+.learning-preview{
+  border-radius:25px;padding:27px;
+  background:linear-gradient(145deg,#e6eaff,#f6eaff);
+}
+.video-window{
+  min-height:245px;border-radius:19px;
+  display:grid;place-items:center;text-align:center;color:white;
+  background:linear-gradient(135deg,#252e71,#8551d9);
+  padding:25px;
+}
+.play-button{
+  width:65px;height:65px;border-radius:50%;
+  border:0;background:white;color:var(--blue);
+  font-size:24px;margin-bottom:12px;
+}
+.progress{height:9px;background:#e6e9f3;border-radius:20px;overflow:hidden}
+.progress span{display:block;height:100%;width:68%;background:var(--green);border-radius:20px}
+.learning-info h3{font-size:30px;margin-bottom:15px}
+.learning-info p{color:var(--muted);margin-bottom:22px}
+.check-list{list-style:none;display:grid;gap:13px}
+.check-list li:before{content:"✓";color:var(--green);font-weight:900;margin-right:10px}
+
+.demo-section{background:#f0f2ff}
+.demo-box{
+  max-width:740px;margin:auto;background:white;
+  border-radius:25px;padding:35px;box-shadow:var(--shadow);
+}
+.demo-question{font-size:23px;font-weight:900;margin:20px 0}
+.answers{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.answer{
+  padding:17px;border:2px solid #e8eaf3;
+  background:white;border-radius:13px;text-align:left;font-weight:800;
+}
+.answer:hover{border-color:var(--blue);background:#f3f4ff}
+.answer.correct{background:#e5f9ed;border-color:var(--green)}
+.answer.wrong{background:#ffeded;border-color:#ef8585}
+.feedback{margin-top:18px;font-weight:800;min-height:28px}
+
+.parent-section{background:var(--navy);color:white}
+.parent-section .section-title p{color:#b8bfdf}
+.parent-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.parent-card{
+  background:#20294d;border:1px solid #39446d;
+  border-radius:22px;padding:25px;
+}
+.parent-card h3{margin-bottom:17px}
+.metric{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:13px 0;border-bottom:1px solid #3b466d;
+}
+.metric:last-child{border:0}
+.metric strong{font-size:20px;color:var(--yellow)}
+.parent-message{
+  padding:15px;background:#303b65;border-radius:13px;margin-top:12px;
+}
+.parent-message small{color:#c2c9e6}
+
+.age-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.age-card{
+  border-radius:22px;padding:27px;text-align:center;
+  background:white;box-shadow:var(--shadow);
+}
+.age-card .age-icon{font-size:55px;margin-bottom:10px}
+.age-card p{color:var(--muted);font-size:14px;margin-top:10px}
+
+.pricing-section{background:#fff}
+.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:stretch}
+.price-card{
+  padding:24px;border:1px solid #e7e9f2;border-radius:22px;
+  position:relative;display:flex;flex-direction:column;
+}
+.price-card.popular{
+  border:2px solid var(--blue);box-shadow:var(--shadow);
+}
+.popular-tag{
+  position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+  background:var(--blue);color:white;padding:5px 13px;
+  font-size:10px;font-weight:900;border-radius:50px;white-space:nowrap;
+}
+.price{font-size:38px;font-weight:950;margin:15px 0}
+.price small{font-size:12px;color:var(--muted);font-weight:500}
+.price-card ul{list-style:none;display:grid;gap:11px;margin:20px 0;flex:1}
+.price-card li{font-size:13px;color:var(--muted)}
+.price-card li:before{content:"✓";color:var(--green);font-weight:900;margin-right:8px}
+.price-card .btn{width:100%;margin-top:15px}
+
+.ad-section{
+  background:linear-gradient(130deg,#e8ebff,#f5eaff);
+}
+.ad-grid{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}
+.ad-card{
+  background:white;padding:28px;border-radius:22px;
+  box-shadow:var(--shadow);
+}
+.ad-item{
+  padding:16px 0;border-bottom:1px solid #edf0f5;
+  display:flex;justify-content:space-between;gap:12px;
+}
+.ad-item:last-child{border:0}
+.ad-item span{font-size:13px;color:var(--muted)}
+.ad-item strong{white-space:nowrap}
+.ad-price{font-size:25px;color:var(--blue);font-weight:950}
+
+.cta{
+  background:linear-gradient(120deg,#5969ec,#8953d7);
+  color:white;text-align:center;border-radius:28px;padding:60px 25px;
+}
+.cta h2{font-size:clamp(29px,4vw,43px)}
+.cta p{color:#e0e3ff;margin:15px auto 25px;max-width:600px}
+
+footer{background:#0c1128;color:white;padding:55px 0 25px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}
+footer p,footer a{color:#b6bdd8;font-size:13px}
+footer h4{margin-bottom:15px}
+.footer-links{display:grid;gap:10px}
+.footer-bottom{
+  border-top:1px solid #2c3454;margin-top:35px;padding-top:20px;
+  color:#9ca6ca;font-size:12px;display:flex;
+  justify-content:space-between;gap:15px;flex-wrap:wrap;
+}
+
+.modal{
+  display:none;position:fixed;inset:0;background:#090e28c9;
+  z-index:200;place-items:center;padding:20px;
+}
+.modal.active{display:grid}
+.modal-content{
+  background:white;border-radius:22px;padding:30px;
+  max-width:430px;width:100%;position:relative;
+}
+.modal-content input,.modal-content select{
+  width:100%;padding:13px;border:1px solid #dfe2ee;
+  border-radius:10px;margin:9px 0 15px;
+}
+.close{
+  position:absolute;right:18px;top:12px;
+  background:none;border:0;font-size:25px;
+}
+#toast{
+  position:fixed;bottom:25px;right:25px;
+  background:var(--navy);color:white;padding:15px 20px;
+  border-radius:13px;display:none;z-index:300;
+  box-shadow:var(--shadow);max-width:320px;
+}
+
+@media(max-width:950px){
+  .pricing-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-grid{gap:20px}
+  .feature-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:700px){
+  .nav-links{
+    display:none;position:absolute;top:76px;left:0;width:100%;
+    padding:25px;background:white;flex-direction:column;
+    align-items:stretch;box-shadow:var(--shadow);
+  }
+  .nav-links.open{display:flex}
+  .menu-btn{display:block}
+  .hero{padding:65px 0}
+  .hero-grid,.learning-grid,.parent-grid,.ad-grid{grid-template-columns:1fr}
+  .hero-art{min-height:300px}
+  .orbit{width:235px;height:235px;font-size:100px}
+  .float-card.one{right:0}
+  .feature-grid,.age-grid{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:1fr}
+  .answers{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .demo-box{padding:23px}
+  .section{padding:60px 0}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="logo" href="#">MIND<span>SPARK</span> KIDS
+      <small>LEARN • PLAY • GROW</small>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#features">Features</a>
+      <a href="#learning">Learning</a>
+      <a href="#parents">Parents</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#partners">Advertisers</a>
+      <button class="btn btn-primary" onclick="openModal('signup')">Join the Adventure</button>
+    </nav>
+    <button class="menu-btn" onclick="toggleMenu()" aria-label="Toggle navigation">☰</button>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">🚀 THE FUTURE OF FUN LEARNING</span>
+      <h1>Big Dreams.<br>Bright Minds.<br><span>Unlimited Discovery.</span></h1>
+      <p class="hero-copy">
+        Turn learning into an adventure. Discover interactive lessons,
+        memory challenges, educational games and family-powered growth.
+        Every little discovery builds a brighter future.
+      </p>
+      <div class="hero-actions">
+        <button class="btn btn-light" onclick="openModal('signup')">Start Learning Free →</button>
+        <a href="#learning" class="btn btn-outline" style="color:white;background:transparent;border-color:#ffffff66">Explore Learning</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>35 sec</strong><small>Quick lessons</small></div>
+        <div><strong>3 levels</strong><small>Age-based learning</small></div>
+        <div><strong>∞</strong><small>Ways to discover</small></div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="orbit">🧠</div>
+      <div class="float-card one">⭐ Earn learning rewards</div>
+      <div class="float-card two">🎮 Play. Think. Discover.</div>
+      <div class="float-card three">🏆 Level up!</div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-strip">
+  <span>🧠 MEMORY DEVELOPMENT</span>
+  <span>🎮 INTERACTIVE PLAY</span>
+  <span>👨‍👩‍👧 FAMILY LEARNING</span>
+  <span>📚 SMARTER STUDYING</span>
+</div>
+
+<section class="section" id="features">
+  <div class="container">
+    <div class="section-title">
+      <h2>More Than Learning. <span class="gradient">A Whole New World.</span></h2>
+      <p>Powerful learning experiences designed to make discovery exciting.</p>
+    </div>
+    <div class="feature-grid">
+      <article class="feature-card">
+        <div class="feature-icon blue">🧠</div>
+        <h3>Memory Missions</h3>
+        <p>Practice recall, visual memory, listening, sequencing and problem-solving through interactive challenges.</p>
+      </article>
+      <article class="feature-card">
+        <div class="feature-icon pink">🎬</div>
+        <h3>35-Second Learning</h3>
+        <p>Quick animated lessons that introduce ideas and encourage children to remember what they learned.</p>
+      </article>
+      <article class="feature-card">
+        <div class="feature-icon yellow">🏆</div>
+        <h3>Achievement Universe</h3>
+        <p>Unlock rewards, collect badges, complete missions and explore new educational worlds.</p>
+      </article>
+      <article class="feature-card">
+        <div class="feature-icon green">👨‍👩‍👧</div>
+        <h3>Parent + Child</h3>
+        <p>Private family communication, progress reports and activities designed to learn together.</p>
+      </article>
+      <article class="feature-card">
+        <div class="feature-icon cyan">📰</div>
+        <h3>Discovery Board</h3>
+        <p>Age-appropriate discoveries, science facts, vocabulary, positive stories and moderated announcements.</p>
+      </article>
+      <article class="feature-card">
+        <div class="feature-icon purple">📊</div>
+        <h3>Smart Testing</h3>
+        <p>Adaptive quizzes, learning assessments and spaced repetition to encourage long-term retention.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section learning-section" id="learning">
+  <div class="container learning-grid">
+    <div class="learning-preview">
+      <div style="display:flex;justify-content:space-between;margin-bottom:18px;font-weight:800">
+        <span>🎬 Today's Brain Boost</span><span style="color:var(--blue)">35 SEC</span>
+      </div>
+      <div class="video-window">
+        <div>
+          <div style="font-size:55px">🪐</div>
+          <h3>Journey Through Space</h3>
+          <p style="color:#d9dcff">Discover something amazing about our solar system!</p>
+          <button class="play-button" onclick="startLesson()">▶</button>
+          <p id="lessonStatus" style="font-size:12px">Tap to start your lesson</p>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin:20px 0 10px;font-size:12px;font-weight:800">
+        <span>Learning progress</span><span>68%</span>
+      </div>
+      <div class="progress"><span></span></div>
+    </div>
+    <div class="learning-info">
+      <span class="eyebrow" style="background:#e9ebff;color:var(--blue)">LEARNING THAT STICKS</span>
+      <h3>Small lessons.<br><span class="gradient">Big breakthroughs.</span></h3>
+      <p>Every lesson is an opportunity to learn, remember, practice and apply a new skill.</p>
+      <ul class="check-list">
+        <li>Short educational video experiences</li>
+        <li>Interactive questions after every lesson</li>
+        <li>Memory reinforcement activities</li>
+        <li>Learning paths that adapt to progress</li>
+        <li>Encouraging rewards and achievements</li>
+      </ul>
+      <br>
+      <a href="#demo" class="btn btn-primary">Try a Learning Challenge →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section demo-section" id="demo">
+  <div class="container">
+    <div class="section-title">
+      <h2>Let's Test That <span class="gradient">Bright Brain!</span></h2>
+      <p>Try a sample memory and knowledge challenge.</p>
+    </div>
+    <div class="demo-box">
+      <span class="eyebrow" style="background:#e8edff;color:var(--blue)">🚀 SPACE EXPLORER CHALLENGE</span>
+      <div style="display:flex;justify-content:space-between;margin-top:18px">
+        <strong>Question 1 of 3</strong><strong id="score">⭐ 0 points</strong>
+      </div>
+      <div class="progress" style="margin-top:10px"><span id="quizProgress" style="width:33%"></span></div>
+      <div class="demo-question" id="question">Which planet is known as the Red Planet?</div>
+      <div class="answers" id="answers">
+        <button class="answer" onclick="checkAnswer(0)">🌍 Earth</button>
+        <button class="answer" onclick="checkAnswer(1)">🔴 Mars</button>
+        <button class="answer" onclick="checkAnswer(2)">🪐 Saturn</button>
+        <button class="answer" onclick="checkAnswer(3)">🌞 Sun</button>
+      </div>
+      <div class="feedback" id="feedback" aria-live="polite"></div>
+      <button id="nextQuestion" class="btn btn-primary" style="display:none;margin-top:15px" onclick="nextQuestion()">Next Challenge →</button>
+    </div>
+  </div>
+</section>
+
+<section class="section parent-section" id="parents">
+  <div class="container">
+    <div class="section-title">
+      <h2>Parents Are Part of the Adventure.</h2>
+      <p>Make every learning milestone something the whole family can celebrate.</p>
+    </div>
+    <div class="parent-grid">
+      <div class="parent-card">
+        <h3>📊 Family Learning Snapshot</h3>
+        <div class="metric"><span>Weekly learning sessions</span><strong>12</strong></div>
+        <div class="metric"><span>Practice challenges</span><strong>24</strong></div>
+        <div class="metric"><span>Learning achievements</span><strong>8</strong></div>
+        <div class="metric"><span>Current learning streak</span><strong>5 days</strong></div>
+        <p style="color:#b8c1e0;font-size:11px;margin-top:12px">Illustrative dashboard data, not a real child assessment.</p>
+      </div>
+      <div class="parent-card">
+        <h3>💌 Family Message Board</h3>
+        <div class="parent-message">
+          <strong>🌟 Today's encouragement</strong>
+          <p>You did an amazing job exploring science today!</p>
+          <small>Sample family message</small>
+        </div>
+        <div class="parent-message">
+          <strong>🎯 Tonight's 5-Minute Challenge</strong>
+          <p>Ask your child to name three things they learned today.</p>
+          <small>Family activity</small>
+        </div>
+        <button class="btn btn-light" style="margin-top:15px" onclick="showToast('Family messaging will be enabled after secure account integration.')">Explore Family Tools</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-title">
+      <h2>A Learning Journey for <span class="gradient">Every Age.</span></h2>
+      <p>Content and challenges designed around developmental stages.</p>
+    </div>
+    <div class="age-grid">
+      <div class="age-card">
+        <div class="age-icon">🧸</div>
+        <h3>Little Explorers</h3>
+        <strong>Ages 4–6</strong>
+        <p>Letters, colors, sounds, counting, recognition and listening activities.</p>
+      </div>
+      <div class="age-card">
+        <div class="age-icon">🚀</div>
+        <h3>Bright Discoverers</h3>
+        <strong>Ages 7–10</strong>
+        <p>Reading, math, science, memory challenges and comprehension.</p>
+      </div>
+      <div class="age-card">
+        <div class="age-icon">🌌</div>
+        <h3>Future Innovators</h3>
+        <strong>Ages 11–15</strong>
+        <p>Critical thinking, financial literacy, advanced learning and test preparation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section pricing-section" id="pricing">
+  <div class="container">
+    <div class="section-title">
+      <h2>Big Opportunities. <span class="gradient">Affordable Learning.</span></h2>
+      <p>Choose the learning experience that fits your family.</p>
+    </div>
+    <div class="pricing-grid">
+      <article class="price-card">
+        <h3>Explorer</h3>
+        <p style="color:var(--muted);font-size:12px">A free place to begin.</p>
+        <div class="price">$0<small>/month</small></div>
+        <ul>
+          <li>Basic learning activities</li>
+          <li>Limited daily lessons</li>
+          <li>Memory games</li>
+          <li>One child profile</li>
+          <li>Basic progress view</li>
+        </ul>
+        <button class="btn btn-outline" onclick="openModal('signup')">Get Started</button>
+      </article>
+      <article class="price-card">
+        <h3>Brain Builder</h3>
+        <p style="color:var(--muted);font-size:12px">More ways to grow.</p>
+        <div class="price">$4.99<small>/month</small></div>
+        <p style="font-size:11px;color:var(--muted)">Or $39.99 annually</p>
+        <ul>
+          <li>Expanded lessons</li>
+          <li>Memory missions</li>
+          <li>Personalized quizzes</li>
+          <li>Two child profiles</li>
+          <li>Weekly progress reports</li>
+        </ul>
+        <button class="btn btn-outline" onclick="selectPlan('Brain Builder')">Choose Plan</button>
+      </article>
+      <article class="price-card popular">
+        <span class="popular-tag">MOST POPULAR</span>
+        <h3>MindSpark Plus</h3>
+        <p style="color:var(--muted);font-size:12px">The complete experience.</p>
+        <div class="price">$8.99<small>/month</small></div>
+        <p style="font-size:11px;color:var(--muted)">Or $79.99 annually</p>
+        <ul>
+          <li>Everything in Brain Builder</li>
+          <li>Adaptive assessments</li>
+          <li>Memory reinforcement</li>
+          <li>Private family messaging</li>
+          <li>Four child profiles</li>
+          <li>Advanced progress reports</li>
+        </ul>
+        <button class="btn btn-primary" onclick="selectPlan('MindSpark Plus')">Choose Plan</button>
+      </article>
+      <article class="price-card">
+        <h3>Family Pro</h3>
+        <p style="color:var(--muted);font-size:12px">More room to discover.</p>
+        <div class="price">$14.99<small>/month</small></div>
+        <p style="font-size:11px;color:var(--muted)">Or $129.99 annually</p>
+        <ul>
+          <li>Everything in Plus</li>
+          <li>Six child profiles</li>
+          <li>Custom learning goals</li>
+          <li>Printable reports</li>
+          <li>Extended family tools</li>
+          <li>Priority support</li>
+        </ul>
+        <button class="btn btn-outline" onclick="selectPlan('Family Pro')">Choose Plan</button>
+      </article>
+    </div>
+    <p style="text-align:center;color:var(--muted);font-size:12px;margin-top:25px">
+      Pricing is illustrative and subject to change. Subscriptions are not yet connected to a payment provider.
+    </p>
+  </div>
+</section>
+
+<section class="section ad-section" id="partners">
+  <div class="container ad-grid">
+    <div>
+      <span class="eyebrow" style="background:white;color:var(--blue)">BUSINESS PARTNERSHIPS</span>
+      <h2 style="font-size:clamp(30px,4vw,43px)">Support Learning.<br><span class="gradient">Build Community.</span></h2>
+      <p style="color:var(--muted);margin:18px 0">
+        Help families access educational opportunities through transparent
+        sponsorships, parent-facing resources and community partnerships.
+      </p>
+      <ul class="check-list">
+        <li>Sponsored educational series</li>
+        <li>Family resource partnerships</li>
+        <li>Scholarship sponsorship programs</li>
+        <li>Community business recognition</li>
+        <li>Aggregate campaign reporting</li>
+      </ul>
+      <br>
+      <button class="btn btn-primary" onclick="openModal('advertiser')">Become a Partner →</button>
+    </div>
+    <div class="ad-card">
+      <h3>📈 Partnership Opportunities</h3>
+      <div class="ad-item">
+        <div><strong>Community Partner</strong><br><span>Parent-facing sponsor recognition</span></div>
+        <div class="ad-price">$149</div>
+      </div>
+      <div class="ad-item">
+        <div><strong>Education Partner</strong><br><span>Sponsored content and resources</span></div>
+        <div class="ad-price">$399</div>
+      </div>
+      <div class="ad-item">
+        <div><strong>Premier Sponsor</strong><br><span>Learning series and scholarships</span></div>
+        <div class="ad-price">$999</div>
+      </div>
+      <p style="font-size:11px;color:var(--muted);margin-top:15px">
+        Illustrative monthly sponsorship packages. Subject to inventory, approval and agreement.
+        Advertising is intended for appropriate parent-facing placements.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="cta">
+      <h2>Every Child Has a Bright Future.</h2>
+      <p>Give curiosity a place to grow. Make discovery an everyday adventure.</p>
+      <button class="btn btn-light" onclick="openModal('signup')">Start Your Free Adventure →</button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="logo" style="color:white">MIND<span>SPARK</span> KIDS</div>
+        <p style="max-width:340px;margin-top:15px">
+          A world of discovery, imagination, interactive learning and family-powered growth.
+        </p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <div class="footer-links">
+          <a href="#features">Features</a>
+          <a href="#learning">Learning</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#partners">Partnerships</a>
+        </div>
+      </div>
+      <div>
+        <h4>Important</h4>
+        <div class="footer-links">
+          <a href="#privacy">Privacy commitment</a>
+          <a href="#safety">Child safety</a>
+          <a href="#parents">Parent resources</a>
+          <a href="mailto:hello@example.com">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> MindSpark Kids. All rights reserved.</span>
+      <span>Designed for discovery. Built for brighter futures.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-content">
+    <button class="close" onclick="closeModal()" aria-label="Close">×</button>
+    <h2 id="modalTitle">Join MindSpark Kids!</h2>
+    <p id="modalDescription" style="color:var(--muted);margin:10px 0 20px">
+      Start your family's learning adventure.
+    </p>
+    <form id="demoForm">
+      <label for="fullName">Parent or guardian name</label>
+      <input id="fullName" name="fullName" required placeholder="Your name">
+      <label for="email">Parent email</label>
+      <input id="email" name="email" type="email" required placeholder="you@example.com">
+      <label for="interest">I'm interested in</label>
+      <select id="interest" name="interest">
+        <option>Family learning membership</option>
+        <option>School partnership</option>
+        <option>Advertising sponsorship</option>
+      </select>
+      <button class="btn btn-primary" style="width:100%" type="submit">Submit Interest</button>
+    </form>
+    <p style="font-size:11px;color:var(--muted);margin-top:15px">
+      Demonstration form only. No information is transmitted or stored.
+      Do not enter children's personal information.
+    </p>
+  </div>
+</div>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const questions = [
+  {
+    q:"Which planet is known as the Red Planet?",
+    a:["🌍 Earth","🔴 Mars","🪐 Saturn","🌞 Sun"],
+    correct:1,
+    explanation:"Mars is called the Red Planet because of iron-rich dust on its surface."
+  },
+  {
+    q:"How many legs does a spider have?",
+    a:["4 legs","6 legs","8 legs","10 legs"],
+    correct:2,
+    explanation:"A spider has eight legs!"
+  },
+  {
+    q:"What do plants need to make their own food?",
+    a:["Sunlight","Plastic","Sand only","Darkness"],
+    correct:0,
+    explanation:"Plants use sunlight, water and carbon dioxide in photosynthesis."
+  }
+];
+
+let questionIndex=0;
+let points=0;
+let answered=false;
+let timer=null;
+
+function toggleMenu(){
+  document.getElementById("navLinks").classList.toggle("open");
+}
+
+document.querySelectorAll(".nav-links a").forEach(link=>{
+  link.addEventListener("click",()=>{
+    document.getElementById("navLinks").classList.remove("open");
+  });
+});
+
+function startLesson(){
+  clearInterval(timer);
+  let remaining=35;
+  const status=document.getElementById("lessonStatus");
+  status.textContent="Lesson demonstration: "+remaining+" seconds remaining";
+  timer=setInterval(()=>{
+    remaining--;
+    status.textContent="Lesson demonstration: "+remaining+" seconds remaining";
+    if(remaining<=0){
+      clearInterval(timer);
+      status.textContent="Lesson complete! Now test what you remember. ⭐";
+      showToast("Great job! Time for a memory challenge.");
+    }
+  },1000);
+}
+
+function renderQuestion(){
+  const q=questions[questionIndex];
+  answered=false;
+  document.getElementById("question").textContent=q.q;
+  document.getElementById("feedback").textContent="";
+  document.getElementById("nextQuestion").style.display="none";
+  document.getElementById("quizProgress").style.width=((questionIndex+1)/questions.length*100)+"%";
+  document.querySelector("#demo strong").textContent="Question "+(questionIndex+1)+" of "+questions.length;
+  document.getElementById("answers").innerHTML=q.a.map((a,i)=>
+    `<button class="answer" onclick="checkAnswer(${i})">${a}</button>`
+  ).join("");
+}
+
+function checkAnswer(index){
+  if(answered)return;
+  answered=true;
+  const q=questions[questionIndex];
+  const buttons=document.querySelectorAll(".answer");
+  buttons.forEach((button,i)=>{
+    button.disabled=true;
+    if(i===q.correct)button.classList.add("correct");
+    if(i===index && i!==q.correct)button.classList.add("wrong");
+  });
+  const feedback=document.getElementById("feedback");
+  if(index===q.correct){
+    points+=10;
+    feedback.textContent="🎉 Correct! +10 points. "+q.explanation;
+    feedback.style.color="#22a879";
+  }else{
+    feedback.textContent="Good try! "+q.explanation;
+    feedback.style.color="#e27b65";
+  }
+  document.getElementById("score").textContent="⭐ "+points+" points";
+  const next=document.getElementById("nextQuestion");
+  next.style.display="inline-flex";
+  next.textContent=questionIndex===questions.length-1?"See Results →":"Next Challenge →";
+}
+
+function nextQuestion(){
+  questionIndex++;
+  if(questionIndex>=questions.length){
+    document.getElementById("question").textContent="Challenge Complete! 🏆";
+    document.getElementById("answers").innerHTML=
+      "<p>You earned "+points+" points out of 30. Great effort!</p>";
+    document.getElementById("feedback").textContent="Remember: practicing again later helps strengthen recall.";
+    document.getElementById("nextQuestion").textContent="Play Again";
+    document.getElementById("nextQuestion").onclick=resetQuiz;
+    return;
+  }
+  renderQuestion();
+}
+
+function resetQuiz(){
+  questionIndex=0;
+  points=0;
+  document.getElementById("score").textContent="⭐ 0 points";
+  document.getElementById("nextQuestion").onclick=nextQuestion;
+  renderQuestion();
+}
+
+function openModal(type){
+  const modal=document.getElementById("modal");
+  const title=document.getElementById("modalTitle");
+  const desc=document.getElementById("modalDescription");
+  const interest=document.getElementById("interest");
+  if(type==="advertiser"){
+    title.textContent="Become a MindSpark Partner";
+    desc.textContent="Tell us about your business and sponsorship interests.";
+    interest.value="Advertising sponsorship";
+  }else{
+    title.textContent="Join MindSpark Kids!";
+    desc.textContent="Start your family's learning adventure.";
+    interest.value="Family learning membership";
+  }
+  modal.classList.add("active");
+}
+
+function closeModal(){
+  document.getElementById("modal").classList.remove("active");
+}
+
+function selectPlan(plan){
+  showToast(plan+" selected. Payment integration is required to activate subscriptions.");
+}
+
+function showToast(message){
+  const toast=document.getElementById("toast");
+  toast.textContent=message;
+  toast.style.display="block";
+  clearTimeout(window.toastTimer);
+  window.toastTimer=setTimeout(()=>toast.style.display="none",3500);
+}
+
+document.getElementById("demoForm").addEventListener("submit",function(e){
+  e.preventDefault();
+  showToast("Demo received locally. Connect a secure backend to process registrations.");
+  this.reset();
+  closeModal();
+});
+
+document.getElementById("modal").addEventListener("click",function(e){
+  if(e.target===this)closeModal();
+});
+
+document.getElementById("year").textContent=new Date().getFullYear();
+renderQuestion();
+</script>
+
+</body>
+</html>
